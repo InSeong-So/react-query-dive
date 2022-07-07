@@ -28,3 +28,19 @@
   2. 첫 번째 페이지 fetch
   3. getNextPageParam이 동작하고 pageParam을 업데이트
   4. 사용자의 scrolls / clicks 으로 fetchNextPage 실행
+
+# 4 요약
+- 양방향 스크롤(bi-directional scrolling)
+  - 데이터의 중간부터 시작할 때 유용(시작점 이후뿐 아니라 이전 데이터도 가져와야 함)
+  - fetchNextPage, hasNextPage, getNextPageParam 함수와 같은 Previous 함수도 존재
+    - 이전 페이지에 대해서도 동일한 기능을 수행할 수 있음
+- 무한 스크롤은 많은 기능을 제공
+  - 페이지네이션 혹은 컴포넌트에서 페이지 처리
+  - pageParam 배열은 가져와야 할 다음 페이지를 나타냄
+    - getNextPageParam 옵션을 통해 관리되며 두 가지 매개변수를 사용
+    - lastPage, allPages로 API의 응답에 따라 취사선택
+    - hasNextPage 값도 제어
+      - 불리언 값은 pageParam이 쫀재하면 참, 아니라면 거짓을 반환
+  - fetchNextPage는 컴포넌트의 영향을 받음
+    - 컴포넌트가 데이터를 불러와야 할 때를 결정
+  - hasNextPage 프로퍼티로 데이터를 그만 가져오게 할 수 있음
