@@ -22,11 +22,11 @@ export function Posts() {
   }, [currentPage, queryClient]);
 
   // replace with useQuery
-  const { data, isError, isLoading } = useQuery<
+  const { data, isError, isFetching } = useQuery<
     { userId: string; id: string; title: string; name: string; body: string }[]
   >(['posts', currentPage], () => fetchPosts(currentPage), { staleTime: 2000, keepPreviousData: true });
 
-  if (isLoading) return <h3>Loading...</h3>;
+  if (isFetching) return <h3>Fetching in Progress...</h3>;
   if (isError) return <h3>Oops, something went wrong</h3>;
 
   if (data === undefined) return <></>;
